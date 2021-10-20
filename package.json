@@ -1,6 +1,7 @@
 {
   "name": "giphy_cannon_v2",
   "version": "1.0.0",
+  "type": "module",
   "description": "Load gifs from Giphy to annoy people",
   "main": "app.js",
   "scripts": {
