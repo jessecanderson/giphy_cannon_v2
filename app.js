@@ -1,23 +1,25 @@
 import express from "express";
-import request from "reqeust";
+import axios from "axios";
 
 const app = express();
 
 const apiKey = "KuAfG9kOpOrhnsDbmyvzbAjaTNh4yB4O";
 
 app.get("/giphy", (req, res) => {
-  request(
-    "https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY",
-    { json: true },
-    (err, res, body) => {
-      if (err) {
-        return console.log(err);
-      }
-      console.log(body.url);
-      console.log(body.explanation);
-    }
-  );
-
+  axios
+    .get(`http://api.giphy.com/v1/gifs/search`, {
+      params: {
+        api_key: apiKey,
+        q: "Princess Bride",
+        limit: 3,
+      },
+    })
+    .then((giphyResponse) => {
+      console.log(giphyResponse);
+    })
+    .then((error) => {
+      console.log(error);
+    });
   res.status(200).send("Made it.");
 });
 
