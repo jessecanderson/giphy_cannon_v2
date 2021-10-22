@@ -15,12 +15,12 @@ app.get("/giphy", (req, res) => {
       },
     })
     .then((giphyResponse) => {
-      console.log(giphyResponse);
+      console.log(giphyResponse.data.data);
+      res.status(200).send(giphyResponse.data.data);
     })
     .then((error) => {
       console.log(error);
     });
-  res.status(200).send("Made it.");
 });
 
 app.listen(3000, (req, res) => {
